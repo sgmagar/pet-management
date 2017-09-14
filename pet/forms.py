@@ -2,6 +2,8 @@ from django import forms
 
 from django.contrib.auth.models import User
 
+from pet.models import Cat, Dog
+
 
 class RegistrationForm(forms.ModelForm):
     class Meta:
@@ -23,4 +25,24 @@ class LoginForm(forms.Form):
     password = forms.CharField(
         widget= forms.PasswordInput(
             attrs={'class': 'form-control', 'placeholder': 'Password', 'required':'required'}))
+
+
+class DogForm(forms.ModelForm):
+    class Meta:
+        model = Dog
+        fields = ['name', 'birthday']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}),
+            'birthday': forms.DateInput(attrs={'class': 'form-control datepicker', 'placeholder': 'Birthday'}),
+        }
+
+
+class CatForm(forms.ModelForm):
+    class Meta:
+        model = Cat
+        fields = ['name', 'birthday']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}),
+            'birthday': forms.DateInput(attrs={'class': 'form-control datepicker', 'placeholder': 'Birthday'}),
+        }
 

@@ -1,0 +1,47 @@
+{% extends '__base.html' %}
+{% load static %}
+{% block extra_css %}
+    <link href="{% static 'css/bootstrap-datepicker.min.css' %}">
+{% endblock %}
+
+{% block login_register %}
+    <div class="float-left">
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
+    <div class="float-right">
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <h4 class="text-center mt-4">Add Dog</h4>
+    <div class="row">
+        <div class="col-lg-4 offset-md-4">
+            <form action="" method="POST">{% csrf_token %}
+                <div class="form-group">
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    {{ form.birthday }}
+                </div>
+                <div class="form-group">
+                    {% if 'edit' in request.path %}
+                        <input type="submit" class="btn btn-primary" value="Edit Dog">
+                    {% else %}
+                        <input type="submit" class="btn btn-primary" value="Add Dog">
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+    <script>
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+        });
+    </script>
+{% endblock %}
