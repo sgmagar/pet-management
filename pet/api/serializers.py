@@ -13,9 +13,6 @@ class DogSerializer(ModelSerializer):
             }
         }
 
-    def get_owner(self, obj):
-        return obj.owner.name
-
 
 class CatSerializer(ModelSerializer):
 
@@ -27,6 +24,3 @@ class CatSerializer(ModelSerializer):
                 'read_only': True
             }
         }
-
-    def get_owner(self, obj):
-        return obj.owner.name

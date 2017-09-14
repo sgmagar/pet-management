@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class UpdateOwnAnimal(permissions.BasePermission):
+class AccessOwnPet(permissions.BasePermission):
     '''Allow user to update their own statue'''
 
     def has_object_permission(self, request, view, obj):
